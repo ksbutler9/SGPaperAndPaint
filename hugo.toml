@@ -1,0 +1,10 @@
+baseURL = 'https://google.com/'
+locale = 'en-us'
+title = "Painting Portfolio"
+theme = 'ananke'
+
+[params]
+  mainSections = ['painting-jobs', 'painting-wallpaper-jobs']
+
+[params.ananke]
+  show_recent_posts = true

@@ -1,0 +1,15 @@
+# Generated files by hugo
+/public/
+/resources/_gen/
+hugo_stats.json
+
+# Executable binaries (optional, depending on workflow)
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# Temporary lock file
+/.hugo_build.lock
+
+# OS system files
+.DS_Store   

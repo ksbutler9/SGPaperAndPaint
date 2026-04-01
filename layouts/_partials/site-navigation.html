@@ -1,0 +1,64 @@
+<nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="{{ .Site.Home.RelPermalink }}" class="f3 fw2 hover-white white-90 dib no-underline">
+      {{ with .Site.Params.site_logo }}
+        <img src="{{ urls.RelURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
+      {{ else }}
+        {{ .Site.Title }}
+      {{ end }}
+    </a>
+    <div class="flex-l items-center">
+      {{ partials.Include "i18nlist.html" . }}
+      {{ if .Site.Menus.main }}
+        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+          {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+              <li class="list f5 f4-ns fw4 {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }} nav-parent">
+                <div class="nav-parent-header" style="display:flex; align-items:center; gap:0.5rem;">
+                  <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+                    {{ .Name }}
+                  </a>
+                  <button type="button" class="nav-parent-toggle" aria-expanded="false" style="background:none;border:none;color:#ffd700;cursor:pointer;font-size:0.9rem;font-weight:700;line-height:1;padding:0;margin:0;">
+                    <span aria-hidden="true">▼</span>
+                  </button>
+                </div>
+                <ul class="submenu pl0" style="margin:0; padding:0; display:none;">
+                  {{ range .Children }}
+                    <li class="list f6 f5-ns fw4" style="margin:0.2rem 0;">
+                      <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+                        {{ .Name }}
+                      </a>
+                    </li>
+                  {{ end }}
+                </ul>
+              </li>
+            {{ else }}
+              <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+                <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
+                  {{ .Name }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      {{ end }}
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('.nav-parent-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+              event.preventDefault();
+              const parent = btn.closest('.nav-parent');
+              if (!parent) return;
+              const submenu = parent.querySelector('.submenu');
+              if (!submenu) return;
+              const isOpen = submenu.style.display !== 'none' && submenu.style.display !== '';
+              submenu.style.display = isOpen ? 'none' : 'block';
+              btn.setAttribute('aria-expanded', String(!isOpen));
+              const icon = btn.querySelector('span[aria-hidden="true"]');
+              if (icon) icon.textContent = isOpen ? '▼' : '▲';            });
+          });
+        });
+      </script>
+    </div>
+  </div>
+</nav>
