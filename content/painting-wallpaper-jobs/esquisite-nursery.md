@@ -9,9 +9,11 @@ featured_image = 'images/nursarywall.jpg'
     weight = 20
 +++
 
-# Elegant Bedroom Suite
+# Elegant Nursery Suite
 
 A sublime wallpaper with endless attention, beautifully blended into the surrounding room and sync with house exterior.
+
+<!--more-->
 
 ## Details
 

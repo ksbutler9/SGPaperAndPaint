@@ -13,6 +13,8 @@ featured_image = 'images/bathroom1.jpg'
 
 A complete transformation of a bathroom featuring custom wallpaper and complementary paint colors to match exterior.
 
+<!--more-->
+
 ## Details
 
 - Location: Urban house
